@@ -1,25 +1,65 @@
-<!--
 
-Copyright 2015 Google Inc. All rights reserved.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-
--->
 <!doctype html>
+<html lang="en">
   <head>
     <meta charset="uft-8">
-    <title>Fireworks!</title>
+    <title>Happy birthday to 毛婉莹!</title>
     <link href="css/fireworks.css" rel="stylesheet">
+    <style>
+        span {
+            position: absolute;
+            user-select: none;
+            font-size: 20px;
+        }
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(function () {
+            var fontAll = [
+                '毛婉莹',
+                '生日快乐',
+                '天天开心',
+                '！！',
+            ];
+            var colorAll = [
+                'LightCoral',
+                'LightBlue',
+                'LightPink',
+                'LightSeaGreen',
+                'LightCyan',
+                'LightSalmon',
+                'Aquamarine',
+            ];
+            // 定义一个变量，初始值为零
+            var index = 0;
+            $(document).click(function (e) {
+                // 用变量来从数组中取出内容
+                var $span = $('<span>' + fontAll[index] + '</span>');
+                $('body').append($span);
+                $span.css('color', colorAll[Math.floor(Math.random() * colorAll.length)])
+                var width = $span.width()
+                var height = $span.height()
+                var init = e.pageY - height / 2;
+                $span.css({
+                    left: e.pageX - width / 2 + 'px',
+                    top: init + 'px'
+                });
+                $span.animate({
+                    fontsize: 10 + 'px',
+                    top: init - 150 + 'px',
+                    opacity: .2
+                }, 1000, function () {
+                    $span.css('display', 'none');
+                })
+                // 把变量加一
+                index++;
+                // 如果变量超过了数组的长度，就重置为零
+                if (index >= fontAll.length) {
+                    index = 0;
+                }
+            });
+        });
+    </script>
   </head>
   <body>
 
